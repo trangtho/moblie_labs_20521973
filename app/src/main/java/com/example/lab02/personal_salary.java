@@ -16,7 +16,7 @@ class personal_salary {
         double temp = gross*(1-0.105);
         if(temp <= 11000000 )
             return temp;
-        return 11000 + (temp-11000000) * (1-0.05);
+        return 11000000 + (temp-11000000) * (1-0.05);
     }
 
 }
