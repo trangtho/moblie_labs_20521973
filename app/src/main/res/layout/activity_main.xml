@@ -48,9 +48,9 @@
             android:layout_height="wrap_content"
             android:text="CALCULATE"
             android:layout_gravity="center"/>
-        <TextView
+        <ListView
             android:id="@+id/result"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="20dp"/>
