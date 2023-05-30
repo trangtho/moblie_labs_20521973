@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
                 final String passwordtxt = password.getText().toString();
 
                 if(fullnametxt.isEmpty()||phonetxt.isEmpty()||usernametxt.isEmpty()||passwordtxt.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(MainActivity.this, "Please fill all fields", Toast.LENGTH_LONG).show();
                 }
                 else
                     if(usernametxt.length()<6||passwordtxt.length()<6){
-                        Toast.makeText(MainActivity.this, "Username and password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Username and password must be at least 6 characters", Toast.LENGTH_LONG).show();
                     }
                 else {
                     User user = new User(fullnametxt, phonetxt, usernametxt, BCrypt.hashpw(passwordtxt, BCrypt.gensalt()));

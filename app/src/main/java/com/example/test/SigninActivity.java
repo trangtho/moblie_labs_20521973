@@ -60,7 +60,7 @@ public class SigninActivity extends AppCompatActivity {
                                             startActivity(intent);
                                         }
                                         else{
-                                            Toast.makeText(SigninActivity.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SigninActivity.this, "Username or Password is incorrect", Toast.LENGTH_LONG).show();
                                         }
                                     }
                                 }
@@ -69,7 +69,7 @@ public class SigninActivity extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     // Xử lý lỗi khi truy vấn dữ liệu
-                                    Toast.makeText(SigninActivity.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SigninActivity.this, "Username or Password is incorrect", Toast.LENGTH_LONG).show();
                                 }
                             });
                 }
