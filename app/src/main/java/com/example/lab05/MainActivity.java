@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -42,15 +44,15 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         handleClickAnimationXml(btnFadeInXml, R.anim.anim_fade_in);
-        handleClickAnimationXml(btnFadeInCode, R.anim.anim_fade_in);
+        handleClickAnimationCode(btnFadeInCode, initFadeInAnimation());
         handleClickAnimationXml(btnFadeOutXml, R.anim.anim_fade_out);
-        handleClickAnimationXml(btnFadeOutCode, R.anim.anim_fade_out);
+        handleClickAnimationCode(btnFadeOutCode, initFadeOutAnimation());
         handleClickAnimationXml(btnBlinkXml, R.anim.anim_blink);
-        handleClickAnimationXml(btnBlinkCode, R.anim.anim_blink);
+        handleClickAnimationCode(btnBlinkCode, initBlinkAnimation());
         handleClickAnimationXml(btnZoomInXml, R.anim.anim_zoom_in);
-        handleClickAnimationXml(btnZoomInCode, R.anim.anim_zoom_in);
+        handleClickAnimationCode(btnZoomInCode, initZoomInAnimation());
         handleClickAnimationXml(btnZoomOutXml, R.anim.anim_zoom_out);
-        handleClickAnimationXml(btnZoomOutCode, R.anim.anim_zoom_out);
+        handleClickAnimationCode(btnZoomOutCode, initZoomOutAnimation());
 
         handleClickAnimationXml(btnRotateXml, R.anim.anim_rotate);
         handleClickAnimationXml(btnMoveXml, R.anim.anim_move);
@@ -121,5 +123,55 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void handleClickAnimationCode(Button btn, final Animation animation){
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ivUitLogo.startAnimation(animation);
+            }
+        });
+    }
+
+    private Animation initFadeInAnimation()
+    {
+        AlphaAnimation animation = new AlphaAnimation(0f, 1f);
+        animation.setDuration(3000);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+    private Animation initFadeOutAnimation() {
+        AlphaAnimation animation = new AlphaAnimation(1f, 0f);
+        animation.setDuration(3000);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+    private Animation initBlinkAnimation() {
+        Animation animation = new AlphaAnimation(1f, 0f);
+        animation.setDuration(500);
+        animation.setRepeatMode(Animation.REVERSE);
+        animation.setRepeatCount(Animation.INFINITE);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+    private Animation initZoomInAnimation() {
+        Animation animation = new ScaleAnimation(1f, 2f, 1f, 2f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setDuration(1000);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+    private Animation initZoomOutAnimation() {
+        Animation animation = new ScaleAnimation(1f, 0.5f, 1f, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setDuration(1000);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
 
 }
